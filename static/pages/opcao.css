@@ -1,0 +1,17 @@
+.bloco img{
+    background: #FFFFE2;
+    border: 1px dashed #bbb;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    text-align: center;
+    display: block;
+    border-radius: 10px;
+   -moz-border-radius: 10px;
+   -webkit-border-radius: 10px;
+   align-self: center;
+   grid-auto-columns: auto;
+   columns: auto;
+}
+/* eu tava tentando colocar tres imagem uma do lado 
+da outra como se fosse tres colunas  */
