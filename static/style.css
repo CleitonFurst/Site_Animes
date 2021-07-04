@@ -5,7 +5,7 @@
 }
 
 body {
-  background: #0ac5fd;
+  background: #ccc;
   background: -webkit-linear-gradient(to right, #556270, #4ecdc4);
 
   display: flex;
@@ -72,7 +72,7 @@ header .logo img {
 }
 
 .manual-btn {
-  border: 2px solid #4ecdc4;
+  border: 2px solid #ccc;
   padding: 5px;
   border-radius: 10px;
   cursor: pointer;
@@ -83,7 +83,7 @@ header .logo img {
 }
 
 .manual-btn:hover {
-  background: #4ecdc4;
+  background: #ccc;
 }
 
 #radio1:checked ~ .first {
@@ -113,7 +113,7 @@ header .logo img {
 }
 
 .navigation-auto div {
-    border: 2px solid #4ecdc4;
+    border: 2px solid #ccc;
     padding: 5px;
     border-radius: 10px;
     transition: 1s;
@@ -125,17 +125,17 @@ header .logo img {
 
 
 #radio1:checked ~ .navigation-auto .auto-btn1 {
-    background: #4ecdc4;
+    background: #ccc;
 }
 
 #radio2:checked ~ .navigation-auto .auto-btn2 {
-    background: #4ecdc4;
+    background: #ccc;
 }
 #radio3:checked ~ .navigation-auto .auto-btn3 {
-    background: #4ecdc4;
+    background: #ccc;
 }
 #radio4:checked ~ .navigation-auto .auto-btn4 {
-    background: #4ecdc4;
+    background: #ccc;
 }
 
 
