@@ -5,7 +5,7 @@
 }
 
 body {
-  background: #4ecdc4;
+  background: #0ac5fd;
   background: -webkit-linear-gradient(to right, #556270, #4ecdc4);
 
   display: flex;
@@ -26,8 +26,8 @@ header {
 }
 
 header .logo img {
-  width: 200px;
-  height: 250px;
+  width: 170px;
+  height: 170px;
   margin: 15px;
 }
 /* slide */
@@ -38,7 +38,7 @@ header .logo img {
   border-radius: 10px;
   overflow: hidden;
   
-  margin-top: 70px;
+  margin-top: 10px;
 }
 
 .slides {
