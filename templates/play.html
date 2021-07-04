@@ -13,40 +13,48 @@
 <body>
 
     {% include 'header.html' %}
-    <div class="bloco">
-        <h1>onde roda o desenho</h1>
-    </div>
-    <div class="bloco">
-        <img src="https://th.bing.com/th/id/OIP.P_5sWR2PR_6ZNcmOIvZvXQHaEK?pid=ImgDet&rs=1" height="250" alt="">
-    </div>
 
-    <div class="bloco">
-        <button>avancar</button>
-        <button>anterior</button>
-    </div>
-    <div class="botao">
-        <a href="/" class="botao">Voltar</a>
-    </div>
-    <div id="single" class="dtsingle">
-        <div id="edit_link"></div>
+
+
+    <div id="single" class="video">
         <div class="content">
-            <div id="playex" class="player_sist"><!--div do player de video -->
+            <div id="playex" class="player_sist">
+                <!--div do player de video -->
                 <div class="playex">
-                    <div  class="play_box" style="display: block;">
+                    <div class="play_box" style="display: block;">
                         <iframe class="metaframe rptss"
                             src="https://www.blogger.com/video.g?token=AD6v5dzlSSEikjrZVFjyhZYP-V9MD0UkHm_GuV28TMMvanaC1F9b2piooat82oTyCGkJH5Py9ckMFnZ-WJLJbvgLVlqjivoTLcxL4ZF5fQx1NUBLfS1ElkIW-UNNxagcriURRlDvo6M"
                             frameborder="0" allowfullscreen="">
                         </iframe>
-                    </div>
-                   
-                </div>
-               
-            </div>
-                </div>
-            </div>
+                    </div><!--play_box-->
+                </div><!--playex-->
+            </div><!--player_sist-->
+        </div><!--content-->
+    </div><!--video-->
+   
+    <div class="pag_episodes">
+        <div class="item">
+            <a class="anterior" href="">
+                <i class="icone_esquerda"></i>
+                <span>Episodio anterior</span>
+            </a>
+        </div>
+        <div class="item"> 
+            <a href="https://animesonline.cc/anime/darling-in-the-franxx/"> 
+                <i class="icone_barra"></i>
+                <span>Todos os episodios</span>
+            </a>        
+        </div>
+        <div class="item"> 
+            <a href="https://animesonline.cc/episodio/darling-in-the-franxx-episodio-2/" title="Darling in the Franxx Episodio 2"> 
+                <span>Proximo episodio</span> 
+                <i class="icone_direita"></i>
+            </a>
         </div>
     </div>
-
+    <div class="botao">
+        <a href="/" class="botao">Voltar</a>
+    </div>
 
     {% include 'footer.html' %}
 

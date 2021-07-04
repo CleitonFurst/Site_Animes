@@ -1,3 +1,16 @@
 .bloco {
     margin-bottom: 5px;
 }
+
+.playex{
+    
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border: 1px solid red;
+}
+.metaframe{
+    width:1000px;
+    height:600px;
+
+}
