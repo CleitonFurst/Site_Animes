@@ -5,46 +5,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto final - Modulo 2</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-
   {% include 'header.html' %}
-  <main>
-    <div class="slider">
-        <a href="#slide-1">1</a>
-        <a href="#slide-2">1</a>
-        <a href="#slide-3">1</a>
-        <a href="#slide-4">1</a>
-        <a href="#slide-5">1</a>
-      
-        <div class="slides">
-          <div id="slide-1">
-            <img src="/assets/img/dragon-ball4.jpg" alt="">
-          </div>
-          <div id="slide-2">
-            <img src="/assets/img/dragon-ball4.jpg" alt="">
-          </div>
-          <div id="slide-3">
-            <img src="/assets/img/dragon-ball4.jpg" alt="">
-          </div>
-          <div id="slide-4">
-            <img src="/assets/img/dragon-ball4.jpg" alt="">
-          </div>
-          <div id="slide-5">
-            <img src="/assets/img/dragon-ball4.jpg" alt="">
-          </div>
+        
+        <!-- image slider start -->
+        <div class="slider">
+            <div class="slides">
+                <!-- radio buttons start -->
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+                <!-- radio buttons end -->
+                <!-- slide images start -->
+                <div class="slide first">
+                   <a href="#" target="blank"> <img src="../static/img/dragon-ball4.jpg" ></a>
+                </div>
+                <div class="slide">
+                    <img src="../static/img/dragon-ball4.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img src="../static/img/dragon-ball4.jpg" alt="">
+                </div>
+                <!-- slide images end -->
+                <!-- automatic navigation start -->
+                <div class="navigation-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+                </div>
+                <!-- automatic navigation end -->
+            </div>
+            <!-- manual navigation start -->
+            <div class="navigation-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                
+            </div>
+            <!-- manual navigation end -->
         </div>
+
+
+      <div class="botao">
+        <a href="/opcao" class="botao">Avançar</a>
       </div>
-    
-    
-</main>
+    {% include 'footer.html' %}
 
-  <div class="botao">
-    <a href="/opcao" class="botao">Avançar</a>
-  </div>
 
-  {% include 'footer.html' %}
+  
+
+        <script type="text/javascript">
+        var counter = 1;
+        setInterval(function(){
+            document.getElementById('radio' + counter).checked = true;
+            counter++;
+            if (counter > 3){
+                counter =1;
+            }
+        },5000);
+        </script>
 
 </body>
 </html>
