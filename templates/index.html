@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="../static/img/icone.png" type="image/x-icon">
@@ -8,66 +9,68 @@
     <title>Animes Blue</title>
     <link rel="stylesheet" href="../static/style.css">
 </head>
+
 <body>
-  {% include 'header.html' %}
-        
-        <!-- image slider start -->
-        <div class="slider">
-            <div class="slides">
-                <!-- radio buttons start -->
-                <input type="radio" name="radio-btn" id="radio1">
-                <input type="radio" name="radio-btn" id="radio2">
-                <input type="radio" name="radio-btn" id="radio3">
-                <input type="radio" name="radio-btn" id="radio4">
-                <!-- radio buttons end -->
-                <!-- slide images start -->
-                <div class="slide first">
-                   <a href="" target="blank"></a> <img src="../static/img/dragon-ball4.jpg" ></a>
-                </div>
-                <div class="slide">
-                    <img src="../static/img/dragon-ball4.jpg" alt="">
-                </div>
-                <div class="slide">
-                    <img src="../static/img/dragon-ball4.jpg" alt="">
-                </div>
-                <!-- slide images end -->
-                <!-- automatic navigation start -->
-                <div class="navigation-auto">
-                    <div class="auto-btn1"></div>
-                    <div class="auto-btn2"></div>
-                    <div class="auto-btn3"></div>
-                </div>
-                <!-- automatic navigation end -->
+    {% include 'header.html' %}
+
+    <!-- image slider start -->
+    <div class="slider">
+        <div class="slides">
+            <!-- radio buttons start -->
+            <input type="radio" name="radio-btn" id="radio1">
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <input type="radio" name="radio-btn" id="radio4">
+            <!-- radio buttons end -->
+            <!-- slide images start -->
+            <div class="slide first">
+                <a href="" target="blank"></a> <img src="../static/img/dragon-ball4.jpg"></a>
             </div>
-            <!-- manual navigation start -->
-            <div class="navigation-manual">
-                <label for="radio1" class="manual-btn"></label>
-                <label for="radio2" class="manual-btn"></label>
-                <label for="radio3" class="manual-btn"></label>
-                
+            <div class="slide">
+                <img src="https://animesonline.cc/wp-content/uploads/2021/04/e77ZdXs1tFmpTOiFfEZSlcz9ZWN-185x278.jpg"
+                    height="100" width="200" alt="">
             </div>
-            <!-- manual navigation end -->
+            <div class="slide">
+                <img src="../static/img/dragon-ball4.jpg" alt="">
+            </div>
+            <!-- slide images end -->
+            <!-- automatic navigation start -->
+            <div class="navigation-auto">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+            </div>
+            <!-- automatic navigation end -->
         </div>
+        <!-- manual navigation start -->
+        <div class="navigation-manual">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
 
+        </div>
+        <!-- manual navigation end -->
+    </div>
 
-      <div class="botao">
-        <a href="/opcao" class="botao">Avançar</a>
-      </div>
+    <div class="botao">
+        <a href="/opcao" class="botao1">Escolher Anime</a>
+    </div>
     {% include 'footer.html' %}
 
 
-  
 
-        <script type="text/javascript">
+
+    <script type="text/javascript">
         var counter = 1;
-        setInterval(function(){
+        setInterval(function () {
             document.getElementById('radio' + counter).checked = true;
             counter++;
-            if (counter > 3){
-                counter =1;
+            if (counter > 3) {
+                counter = 1;
             }
-        },5000);
-        </script>
+        }, 5000);
+    </script>
 
 </body>
+
 </html>

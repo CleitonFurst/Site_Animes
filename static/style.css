@@ -148,3 +148,15 @@ footer {
 footer a {
     color: white;
 }
+
+/* estilizando o Escolher Episodio */
+.botao{
+  text-decoration-color: black;
+  background-color: rgb(102, 102, 109);
+  margin: 2%;
+  text-align: center;
+  border: 2px solid #556270;
+  border-radius: 3px;
+  box-shadow: 3px 3px rgb(53, 53, 53);;
+  cursor: context-menu;
+}
