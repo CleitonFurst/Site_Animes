@@ -2,6 +2,7 @@
   margin: 0;
   border: 0;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -37,7 +38,7 @@ header .logo img {
   height: 500px;
   border-radius: 10px;
   overflow: hidden;
-  
+
   margin-top: 10px;
 }
 
@@ -105,58 +106,118 @@ header .logo img {
 /* css for navigation auto */
 
 .navigation-auto {
-    position: absolute;
-    display: flex;
-    width: 800px;
-    justify-content: center;
-    margin-top: 470px;
+  position: absolute;
+  display: flex;
+  width: 800px;
+  justify-content: center;
+  margin-top: 470px;
 }
 
 .navigation-auto div {
-    border: 2px solid #ccc;
-    padding: 5px;
-    border-radius: 10px;
-    transition: 1s;
+  border: 2px solid #ccc;
+  padding: 5px;
+  border-radius: 10px;
+  transition: 1s;
 }
 
-.navigation-auto div:not(:last-child){
-    margin-right: 40px;
+.navigation-auto div:not(:last-child) {
+  margin-right: 40px;
 }
-
 
 #radio1:checked ~ .navigation-auto .auto-btn1 {
-    background: #ccc;
+  background: #ccc;
 }
 
 #radio2:checked ~ .navigation-auto .auto-btn2 {
-    background: #ccc;
+  background: #ccc;
 }
 #radio3:checked ~ .navigation-auto .auto-btn3 {
-    background: #ccc;
+  background: #ccc;
 }
 #radio4:checked ~ .navigation-auto .auto-btn4 {
-    background: #ccc;
+  background: #ccc;
 }
-
-
-
 
 footer {
   margin-top: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
 footer a {
-    color: white;
+  color: white;
 }
 
 /* estilizando o Escolher Episodio */
-.botao{
-  text-decoration-color: black;
-  background-color: rgb(102, 102, 109);
-  margin: 2%;
+.botao {
+  width: 180px;
+  height: 50px;
+  border-radius: 10px;
+
+  margin-top: 25px;
+
   text-align: center;
-  border: 2px solid #556270;
-  border-radius: 3px;
-  box-shadow: 3px 3px rgb(53, 53, 53);;
-  cursor: context-menu;
+  background: #3e4095;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: -webkit-linear-gradient(45deg, blue 50%, transparent 50%);
+  background-image: linear-gradient(45deg, blue 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  -webkit-transition: background 300ms ease-in-out;
+  transition: background 300ms ease-in-out;
+}
+
+.botao:hover {
+  background-position: 0;
+}
+
+.botao a {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+footer {
+  width: 100%;
+  height: 100px;
+  background: #3e4095;
+}
+
+footer h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  text-transform: uppercase;
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+footer a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+footer img {
+  width: 20px;
+  height: 20px;
+
+  margin-right: 10px;
+}
+.infor-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
