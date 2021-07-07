@@ -39,7 +39,7 @@ header .logo img {
   border-radius: 10px;
   overflow: hidden;
 
-  margin-top: 10px;
+  margin-top: 50px;
 }
 
 .slides {
@@ -156,7 +156,7 @@ footer a {
   height: 50px;
   border-radius: 10px;
 
-  margin-top: 25px;
+  margin-top: 50px;
 
   text-align: center;
   background: #3e4095;
@@ -183,6 +183,11 @@ footer a {
   text-decoration: none;
   font-weight: 700;
 }
+
+
+
+/* footer */
+
 
 footer {
   width: 100%;
@@ -220,4 +225,8 @@ footer img {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+footer a:hover{
+  color: #000;
 }

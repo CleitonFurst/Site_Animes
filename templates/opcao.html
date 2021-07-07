@@ -7,12 +7,15 @@
     <link rel="shortcut icon" href="../static/img/icone.png" type="image/x-icon">
     <title>Animes Blue</title>
     <link rel="stylesheet" href="/static/style.css">
-    <link rel="stylesheet" href="/Site_Animes/static/pages/opcao.css">
+    <link rel="stylesheet" href="/static/pages/opcao.css">
 </head>
 <body>
     {% include 'header.html' %}
+
+    <h2>Assista um Anime</h2>
+
     <div class="bloco tabela">
-        <h2>Assista um Anime</h2>
+        
         {% for anime in animes %}
        
         <tbody>
@@ -21,11 +24,12 @@
                 <img src="{{anime.imagem_url}}" height="300" alt="{{anime.nome}}"></a>                
             </td>
         </tbody>
+        
         {% endfor %}
     </div>
-    <div class="botao">
-        <a href="/episodios" class="botao">Avançar</a>
-      </div>
+        <div class="botao">
+            <a href="/episodios" class="botao">Avançar</a>
+        </div>
     {% include 'footer.html' %}
 </body>
 </html>
