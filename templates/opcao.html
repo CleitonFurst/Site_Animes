@@ -7,14 +7,13 @@
     <link rel="shortcut icon" href="../static/img/icone.png" type="image/x-icon">
     <title>Animes Blue</title>
     <link rel="stylesheet" href="/static/style.css">
-    <link rel="stylesheet" href="/Site_Animes/static/pages/opcao.css">
+    <link rel="stylesheet" href="/static/pages/opcao.css">
 </head>
 <body>
     {% include 'header.html' %}
     <div class="bloco tabela">
         <h2>Assista um Anime</h2>
         {% for anime in animes %}
-       
         <tbody>
             <td>
                 <a href="/episodios/{{anime.id}}">
