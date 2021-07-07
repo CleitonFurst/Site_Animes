@@ -11,13 +11,17 @@
 </head>
 <body>
     {% include 'header.html' %}
-    <div class="bloco">
-        <h1>pagina onde vai escolher qual desenho assistir</h1>
-        <td>
-            <img src="https://th.bing.com/th/id/OIP.R-U4iK6Esf20yg7AEpACpQHaEK?pid=ImgDet&rs=1" height="300" alt="imagem anime">
-            <img src="https://animesonline.cc/wp-content/uploads/2021/04/e77ZdXs1tFmpTOiFfEZSlcz9ZWN-185x278.jpg" height="300" alt="imagem anime"> <!--img anime Josue-->
-            <img src="https://th.bing.com/th/id/OIP.R-U4iK6Esf20yg7AEpACpQHaEK?pid=ImgDet&rs=1" height="300" alt="imagem anime">
-        </td>
+    <div class="bloco tabela">
+        <h2>Assista um Anime</h2>
+        {% for anime in animes %}
+        <tbody>
+            <td>
+                <img src="{{anime.imagem_url}}" height="300" alt="{{anime.nome}}">
+                <!-- <img src="https://animesonline.cc/wp-content/uploads/2021/04/e77ZdXs1tFmpTOiFfEZSlcz9ZWN-185x278.jpg" height="300" alt="imagem anime"> img anime Josue -->
+                <!-- <img src="https://th.bing.com/th/id/OIP.R-U4iK6Esf20yg7AEpACpQHaEK?pid=ImgDet&rs=1" height="300" alt="imagem anime"> -->
+            </td>
+        </tbody>
+        {% endfor %}
     </div>
     <div class="botao">
         <a href="/episodios" class="botao">Avançar</a>

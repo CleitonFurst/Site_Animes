@@ -18,11 +18,11 @@ db = SQLAlchemy(app)
 
 
 # Modelos 
-class Filmes(db.Model):
+class Animes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255), nullable=False)
     imagem_url = db.Column(db.String(255), nullable=False)
-    def __init__(self,nome,imagem_url):
+    def __init__(self, nome, imagem_url):
         self.nome = nome
         self.imagem_url = imagem_url
         
@@ -30,12 +30,12 @@ class Filmes(db.Model):
     def read_all():
         #SELECT * FROMM filmes order by id desc;
         #return Filmes.query.order_by(Filmes.id.desc()).all()
-        return Filmes.query.all()
+        return Animes.query.all()
 
     @staticmethod
-    def read_single(filme_id):
+    def read_single(animes_id):
         #select * from filmes where id =   <id_de_um_filme>
-        return Filmes.query.get(filme_id)
+        return Animes.query.get(animes_id)
     def save(self):
         db.session.add(self)#adicionando imformações passadas no form do html para o banco de dados
         db.session.commit()
@@ -49,7 +49,42 @@ class Filmes(db.Model):
         db.session.delete(self)#remnovendo as informações de um filme do banco de dados 
         db.session.commit()
 
+class Episodios(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    numero = db.Column(db.String(20), nullable=False)
+    descricao = db.Column(db.String(255), nullable=False)
+    link_url = db.Column(db.String(255), nullable=False)
+    anime_id = db.Column(db.Integer, nullable=False)
+    def __init__(self,numero,link_url,descricao):
+        self.numero = numero
+        self.link_url = link_url
+        self.descricao = descricao
 
+    @staticmethod
+    def selecao(id_anime):
+        return Episodios.query.filter(Episodios.anime_id == id_anime)
+    @staticmethod
+    def read_all():
+        #SELECT * FROMM filmes order by id desc;
+        #return Filmes.query.order_by(Filmes.id.desc()).all()
+        return Episodios.query.all()
+
+    @staticmethod
+    def read_single(episodio_id):
+        #select * from filmes where id =   <id_de_um_filme>
+        return Episodios.query.get(episodio_id)
+    def save(self):
+        db.session.add(self)#adicionando imformações passadas no form do html para o banco de dados
+        db.session.commit()
+
+    def update(self,new_data):
+        self.nome = new_data.nome
+        self.imagem_url = new_data.imagem_url
+        self.save()
+
+    def delete(self):
+        db.session.delete(self)#remnovendo as informações de um filme do banco de dados 
+        db.session.commit()
 
 @app.route('/')
 def index():
@@ -57,17 +92,26 @@ def index():
 
 @app.route('/opcao')
 def Opcao():
-    return render_template('opcao.html')
+    animes = Animes.read_all()
+    return render_template(
+        'opcao.html',
+        animes = animes
+    )
 
 @app.route('/episodios')
-def Episodios():
-    return render_template('episodios.html')
+def episodios():
+    
+    episodios = Episodios.read_all()
+   
+    return render_template('episodios.html', episodios = episodios)
 
-@app.route('/play') 
-def Play():
-    return render_template('play.html')
+@app.route('/play/<episodio_id>') 
+def Play(episodio_id):
+    episodio = Episodios.read_single(episodio_id)
 
-#app.register_blueprint(bp)
+    return render_template('play.html', episodio = episodio)
+
+app.register_blueprint(bp)
 
 if __name__ == '__main__':
     app.run(debug=True)
