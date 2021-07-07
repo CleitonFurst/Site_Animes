@@ -18,11 +18,11 @@ db = SQLAlchemy(app)
 
 
 # Modelos 
-class Filmes(db.Model):
+class Animes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255), nullable=False)
     imagem_url = db.Column(db.String(255), nullable=False)
-    def __init__(self,nome,imagem_url):
+    def __init__(self, nome, imagem_url):
         self.nome = nome
         self.imagem_url = imagem_url
         
@@ -30,12 +30,12 @@ class Filmes(db.Model):
     def read_all():
         #SELECT * FROMM filmes order by id desc;
         #return Filmes.query.order_by(Filmes.id.desc()).all()
-        return Filmes.query.all()
+        return Animes.query.all()
 
     @staticmethod
-    def read_single(filme_id):
+    def read_single(animes_id):
         #select * from filmes where id =   <id_de_um_filme>
-        return Filmes.query.get(filme_id)
+        return Animes.query.get(animes_id)
     def save(self):
         db.session.add(self)#adicionando imformações passadas no form do html para o banco de dados
         db.session.commit()
@@ -57,7 +57,11 @@ def index():
 
 @app.route('/opcao')
 def Opcao():
-    return render_template('opcao.html')
+    animes = Animes.read_all()
+    return render_template(
+        'opcao.html',
+        animes = animes
+    )
 
 @app.route('/episodios')
 def Episodios():
@@ -67,7 +71,7 @@ def Episodios():
 def Play():
     return render_template('play.html')
 
-#app.register_blueprint(bp)
+app.register_blueprint(bp)
 
 if __name__ == '__main__':
     app.run(debug=True)
