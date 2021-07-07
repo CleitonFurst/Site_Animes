@@ -7,3 +7,18 @@
 /* pensei em colocar aqui os episodios com se fosse uma 
 uns quadrantes, ex. 4x4 ou 5x5 pra que os episodios que 
 quisesse assistir era so cicar em cima, mais isso é so no html que faz... */
+.imagem{
+    background: #FFFFE2;
+    border: 1px dashed #bbb;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    text-align: center;
+    display: block;
+    border-radius: 10px;
+   -moz-border-radius: 10px;
+   -webkit-border-radius: 10px;
+   align-self: center;
+   grid-auto-columns: auto;
+   columns: auto;
+}

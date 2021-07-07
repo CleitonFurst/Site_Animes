@@ -98,10 +98,10 @@ def Opcao():
         animes = animes
     )
 
-@app.route('/episodios')
-def episodios():
+@app.route('/episodios/<animes_id>')
+def episodios(animes_id):
     
-    episodios = Episodios.read_all()
+    episodios = Episodios.selecao(animes_id)
    
     return render_template('episodios.html', episodios = episodios)
 
