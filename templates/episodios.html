@@ -1,48 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/img/icone.png" type="image/x-icon">
     <title>Projeto Final - Modulo 2</title>
     <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="/static/pages/episodios.css">
 </head>
+
 <body>
     {% include 'header.html' %}
-    <h1>TITULO DO ANIME</h1>
-         
-    <div class="bloco">
-        <img src="https://upload.wikimedia.org/wikipedia/pt/7/74/Dragon_Ball_Super_Key_visual.jpg" alt="">
-         
-        <p>Descriçao do anime Descriçao do anime Descriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do anime</p>
-        
-    </div><!--titulo-->
-    <h2>Temporada 1</h2>
-    <div class="bloco2">
-        <table class="tabela">
-            <tr class="tabela_header">
-                <td>Nome</td>
-                <td>Imagem</td>
-                <td>Ações</td>
-            </tr><!--th tag usada para criar o cabeçalho da tabela e td usada para colocar o nome das colunas da tabela   -->
-        
-        <tbody>
-            {% for anime in episodios %}
-             <ul class="imagem">
-                <li>
-                     <div>
-                         <a  href="/play/{{anime.id}}">{{anime.numero}}</a>
-                     </div>
-                 </li>
-             </ul>
-            
-            {% endfor %}
-        </table>
 
-        </tbody><!--corpo da tabela que vai listar os dados-->
-    </div><!--tabela-->
-    
+    <div class="content">
+        <div class="sheader">
+            <div class="poster"> <img
+                    src="https://animesonline.cc/wp-content/uploads/2019/07/oO5tir7lV4slZHTyhW8lTFrgyif-185x278.jpg"
+                    alt="Darling in the Franxx"></div>
+            <div class="data">
+                <h1>Darling in the Franxx Todos os Episodios Online</h1>
+                <div class="extra"> <span class="date">2018</span></div>
+
+            </div>
+            <div class="sgeneros"> <a href="https://animesonline.cc/genero/acao/" rel="tag">Ação</a><a
+                    href="https://animesonline.cc/genero/aventura/" rel="tag">Aventura</a><a
+                    href="https://animesonline.cc/genero/dublado/" rel="tag">Dublado</a><a
+                    href="https://animesonline.cc/genero/fantasia/" rel="tag">Fantasia</a><a
+                    href="https://animesonline.cc/genero/ficcao-cientifica/" rel="tag">Ficção científica</a><a
+                    href="https://animesonline.cc/genero/legendado/" rel="tag">Legendado</a><a
+                    href="https://animesonline.cc/genero/letra-d/" rel="tag">Letra D</a><a
+                    href="https://animesonline.cc/genero/mecha/" rel="tag">Mecha</a></div>
+        </div>
+    </div>
+    <div class="single_tabs"></div>
+    <div class="resumotemp">
+        <div class="wp-content">
+            <p>Darling in the Franxx Todos os Episodios Online, Assistir Darling in the Franxx Anime Completo, Assistir
+                Darling in the Franxx Online.<br> A história está definida no futuro distante. A terra está arruinada, e
+                a humanidade estabelece a plantação móvel da fort city. Os pilotos produziram dentro de Plantation ao
+                vivo em Mistilteinn, também conhecido como “birdcage”. As crianças vivem ali sem saber nada do mundo
+                exterior nem da liberdade do céu. Suas vidas consistem em lutar para realizar missões. Seus inimigos são
+                misteriosas formas de vida gigantes conhecidas como Kyōryū, e os robôs pilotos das crianças chamaram
+                Franxx para enfrentarem-se contra eles. Para as crianças, montar o Franxx prova sua existência. Um
+                menino chamado Hiro é chamado de Código: 016, e ele já foi conhecido como um prodígio. No entanto, ele
+                ficou para trás, e sua existência parece desnecessária. Não pilotar um Franxx é o mesmo que deixar de
+                existir. Um dia, aparece uma menina misteriosa conhecida como “Zero Two”. Dois chifres crescem fora de
+                sua cabeça.</p>
+            <h2>Todos episódios de Darling in the Franxx</h2>
+        </div>
+    </div>
+    <div class="tempep">
+        <h2>Temporadas e Episodios</h2>
+        <div id="serie_contenido">
+            <div id="seasons">
+                <div class="se-c">
+                    <div class="se-q"> <span class="se-t se-o"></span> <span class="title">Temporada 1 </span>
+                    </div>
+                    <div class="se-a" style="display:block">
+                        {% for anime in episodios %}
+                        <ul class="episodios">
+                            <li>
+                                <div class="imagen"><a href="/play/{{anime.id}}"><img
+                                            src="https://animesonline.cc/wp-content/uploads/2019/07/gQODK1aRngAfkCqBNqKrHyCtdqY-300x170.jpg"></a>
+                                </div>
+
+                                <div class="episodiotitle"> <a href="/play/{{anime.id}}">{{anime.numero}}</a> </div>
+                            </li>
+
+                        </ul>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="botao1">
+        <a href="/opcao" class="botao">Voltar</a>
+    </div>
+    </div>
     {% include 'footer.html' %}
 </body>
+
 </html>
