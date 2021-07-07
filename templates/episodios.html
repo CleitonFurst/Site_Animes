@@ -10,13 +10,18 @@
 </head>
 <body>
     {% include 'header.html' %}
+    <h1>TITULO DO ANIME</h1>
+         
     <div class="bloco">
-        <h2>Temporadas e Episodios</h2>
+        <img src="https://upload.wikimedia.org/wikipedia/pt/7/74/Dragon_Ball_Super_Key_visual.jpg" alt="">
+         
+        <p>Descriçao do anime Descriçao do anime Descriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do animeDescriçao do anime</p>
+        
     </div><!--titulo-->
-    <div class="bloco">
+    <h2>Temporada 1</h2>
+    <div class="bloco2">
         <table class="tabela">
             <tr class="tabela_header">
-                
                 <td>Nome</td>
                 <td>Imagem</td>
                 <td>Ações</td>
@@ -25,9 +30,8 @@
         <tbody>
             {% for anime in episodios %}
              <ul class="imagem">
-                 <li>
-                     <div class="imagem">
-                        
+                <li>
+                     <div>
                          <a  href="/play/{{anime.id}}">{{anime.numero}}</a>
                      </div>
                  </li>

@@ -1,16 +1,30 @@
 .bloco {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
-.playex{
-    
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border: 1px solid red;
+.playex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #3e4095;
 }
-.metaframe{
-    width:1000px;
-    height:600px;
+.metaframe {
+  width: 1000px;
+  height: 600px;
+}
 
+.pag_episodes {
+  display: flex;
+}
+
+.pag_episodes .item {
+  margin-right: 20px;
+}
+.pag_episodes .item a {
+  text-decoration: none;
+
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+  letter-spacing: 1px;
 }

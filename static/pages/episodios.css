@@ -1,15 +1,31 @@
-.bloco{
-    margin-bottom: 5px;
+.bloco {
+  margin-top: -76px;
+  margin-bottom: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
-.bloco img{
-    display: flex;
+h1 {
+  margin-top: 20px;
+  position: relative;
+}
+
+.bloco p {
+  margin-top: 90px;
+  max-width: 700px;
+
+  font-size: 18px;
+}
+.bloco img {
+  width: 300px;
+  margin: 60px;
 }
 /* pensei em colocar aqui os episodios com se fosse uma 
 uns quadrantes, ex. 4x4 ou 5x5 pra que os episodios que 
 quisesse assistir era so cicar em cima, mais isso é so no html que faz... */
-.imagem{
-    background: #FFFFE2;
-    border: 1px dashed #bbb;
+
+.imagem {
+  /* background: #;
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 5px;
@@ -20,5 +36,46 @@ quisesse assistir era so cicar em cima, mais isso é so no html que faz... */
    -webkit-border-radius: 10px;
    align-self: center;
    grid-auto-columns: auto;
-   columns: auto;
+   columns: auto; */
+
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+
+  margin-top: 20px;
+
+  text-align: center;
+  background: #3e4095;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  background-image: -webkit-linear-gradient(45deg, blue 50%, transparent 50%);
+  background-image: linear-gradient(45deg, blue 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  -webkit-transition: background 300ms ease-in-out;
+  transition: background 300ms ease-in-out;
+
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.imagem:hover {
+  background-position: 0;
+}
+
+.imagem a {
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
