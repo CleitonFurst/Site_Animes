@@ -88,7 +88,11 @@ class Episodios(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    animes = Animes.read_all()
+    return render_template(
+        'index.html',
+        animes = animes
+    )
 
 @app.route('/opcao')
 def Opcao():

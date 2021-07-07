@@ -18,5 +18,9 @@
 .bloco img {
     margin-right: 20px;
 }
+.bloco h2{
+    display: flex;
+    
+}
 /* eu tava tentando colocar tres imagem uma do lado 
 da outra como se fosse tres colunas  */
