@@ -165,7 +165,6 @@ body {
     width: 70%;
     padding: 15px;
     display: inline-block;
-    margin-bottom: ;
     border-bottom: 3px solid #333;
 }
 .wp-content {
@@ -236,7 +235,10 @@ p {
     text-decoration: none;
     font-weight: 600;
     font-size: 16px;
-    font-family: "Roboto",sans-serif;';
+    font-family: "Roboto",sans-serif;
+
+    margin-bottom: 10px;
+    background: rgb(153, 2, 2);
 }
 ul, li .episodios {
     list-style-type: none;
