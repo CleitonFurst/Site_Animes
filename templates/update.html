@@ -17,7 +17,7 @@
             <p>Registro editado com sucesso!!</p>
         </div>
     
-    {% elif anime %}
+    {% elif animes %}
     <div class = "bloco">
         <h2>Editar Registro</h2>
     </div>
@@ -25,7 +25,7 @@
         <form class="form" method="POST">
            <div class="bloco form_input">
                 <label for="nome">Anime:</label>
-                <input type="text" id="nome" name="nome" value="{{anime.id}}"> 
+                <input type="text" id="nome" name="nome" value="{{anime.nome}}"> 
            </div><!--bloco form_input-->
 
            <div class="bloco form_input">

@@ -28,8 +28,8 @@ class Animes(db.Model):
         self.imagem_url = imagem_url
         
     @staticmethod
-    def selecao(animes_id):
-        return Animes.query.filter(Animes.id == animes_id)    
+    def selecao(id_animes):
+        return Animes.query.filter(Animes.id == id_animes)    
     @staticmethod
     def read_all():
         #SELECT * FROMM filmes order by id desc;
@@ -61,15 +61,14 @@ class Episodios(db.Model):
     descricao = db.Column(db.String(255), nullable=False)
     link_url = db.Column(db.String(255), nullable=False)
     anime_id = db.Column(db.Integer, nullable=False)
-    def __init__(self, numero, descricao, link_url, anime_id):
+    def __init__(self,numero,link_url,descricao):
         self.numero = numero
         self.link_url = link_url
         self.descricao = descricao
-        self.anime_id = anime_id
 
     @staticmethod
-    def selecao(id_episodio):
-        return Episodios.query.filter(Episodios.episodio_id == id_episodio)
+    def selecao(id_anime):
+        return Episodios.query.filter(Episodios.anime_id == id_anime)
     @staticmethod
     def read_all():
         #SELECT * FROMM filmes order by id desc;
@@ -95,11 +94,8 @@ class Episodios(db.Model):
 
 class Comentarios(db.Model):
     id = db.Column(db.Integer, primary_key = True)
-    comentario = db.Column(db.String(255), nullable=False)
-    id_episodio = db.Column(db.Integer, nullable=False)
-    def __init__(self, comentarios, id_episodio):
+    def __init__(self, comentarios):
         self.comentario = comentarios
-        self.id_episodio = id_episodio
     @staticmethod
     def read_all():
         return Comentarios.query.all()
@@ -116,7 +112,11 @@ class Comentarios(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    animes = Animes.read_all()
+    return render_template(
+        'index.html',
+        animes = animes
+    )
 
 @app.route('/opcao')
 def Opcao():
@@ -140,11 +140,7 @@ def insert():
 
 @app.route('/opcao/update')
 def update():
-    animes = Animes.read_all()
-    return render_template(
-        'update.html',
-        animes = animes
-    )
+    return render_template('update.html')
 
 @app.route('/update/<animes_id>', methods=('GET', 'POST'))
 def update_anime(animes_id):
@@ -196,11 +192,11 @@ def Play(episodio_id):
 
 
 @app.route('/play/comentarios', methods=('GET', 'POST')) 
-def Play_comentario(comentario_id):
+def Play_comentario(comentario):
     novo_comentario = None
     if request.method == 'POST':
         form = request.form
-        comentarios = Comentarios(form[comentario_id])
+        comentarios = Comentarios(form[comentario])
         comentarios.save()
         novo_comentario = comentarios.id
     return render_template(
