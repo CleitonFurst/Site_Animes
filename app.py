@@ -91,6 +91,8 @@ class Comentario(db.Model):
     def __init__(self, comentario):
         self.comentario = comentario
     @staticmethod
+    def read_single(comentario_id):
+        return Comentario.query.get(comentario_id)
     def save(self):
         db.session.add(self)
         db.session.commit()
