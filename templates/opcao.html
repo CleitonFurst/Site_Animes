@@ -17,9 +17,10 @@
     <div class="bloco tabela">
         
         {% for anime in animes %}
-       
+        
         <tbody>
             <td>
+                <a href="/update/{{anime.id}}" class="botao">Atualizar</a>
                 <a href="/episodios/{{anime.id}}">
                 <img src="{{anime.imagem_url}}" height="300" alt="{{anime.nome}}"></a>                
             </td>
@@ -28,7 +29,10 @@
         {% endfor %}
     </div>
         <div class="botao"><a href="/episodios">Avançar</a></div> 
+        <a href="/read/{{animes.id}}" class="botao">Visualizar</a>
         
+        <a href="/update/{{animes.id}}" class="botao">Atualizar</a>
+        <a href="/delete/{{animes.id}}" class="botao">Deletar</a>
              
     {% include 'footer.html' %}
 </body>

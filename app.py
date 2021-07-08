@@ -22,10 +22,14 @@ class Animes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255), nullable=False)
     imagem_url = db.Column(db.String(255), nullable=False)
+    
     def __init__(self, nome, imagem_url):
         self.nome = nome
         self.imagem_url = imagem_url
         
+    @staticmethod
+    def selecao(id_anime):
+        return Animes.query.filter(Animes.id == id_anime)    
     @staticmethod
     def read_all():
         #SELECT * FROMM filmes order by id desc;
@@ -34,7 +38,7 @@ class Animes(db.Model):
 
     @staticmethod
     def read_single(animes_id):
-        #select * from filmes where id =   <id_de_um_filme>
+        
         return Animes.query.get(animes_id)
     def save(self):
         db.session.add(self)#adicionando imformações passadas no form do html para o banco de dados
@@ -80,6 +84,7 @@ class Episodios(db.Model):
     def update(self,new_data):
         self.nome = new_data.nome
         self.imagem_url = new_data.imagem_url
+        
         self.save()
 
     def delete(self):
@@ -93,7 +98,18 @@ def index():
         'index.html',
         animes = animes
     )
+@app.route('/update/<filme_id>', methods=['GET', 'POST'])
+def update(filme_id):
+    sucesso = None
+    anime = Animes.read_single(filme_id)
+    if request.method == 'POST':
+        form = request.form
 
+        new_data = Animes(form['nome'],form['imagem_url'])
+
+        anime.update(new_data)
+        sucesso = True
+    return render_template('update.html', anime = anime, sucesso = sucesso)
 @app.route('/opcao')
 def Opcao():
     animes = Animes.read_all()
@@ -105,9 +121,14 @@ def Opcao():
 @app.route('/episodios/<animes_id>')
 def episodios(animes_id):
     
+    animes = Animes.read_all()
+    
+    resumo = Animes.selecao(animes_id)
+    
     episodios = Episodios.selecao(animes_id)
+    
    
-    return render_template('episodios.html', episodios = episodios)
+    return render_template('episodios.html', episodios = episodios, animes = animes)
 
 @app.route('/play/<episodio_id>') 
 def Play(episodio_id):
