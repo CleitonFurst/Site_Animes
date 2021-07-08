@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% include 'header' %}
+    {% if sucesso %}
+    <div class="bloco removido_sucesso">
+        <p>Registro removido com sucesso</p>
+    </div>
+    <div class="bloco">
+        <a href="/read" class="botao">Visualizar Animes</a>
+    </div>
+    {% elif filme %}
+    <div class="bloco">
+        <h2>Remover Registro</h2>
+    </div>
+    <div class="bloco">
+        <p>Tem certeza que desseja remover este Anime <span class=highlight>{{animes.nome}}</span> ?</p>
+    </div>
+    <div class="bloco">
+        <a href="/delete/{{animes.id}}/confirmed" class="botao">Remover</a>
+        <a href="/read" class="botao">Cancelar</a>
+    </div>
+    {% else %}
+    <div class="bloco">
+        <h2>Remover Registro</h2>
+    </div>
+    <div class="bloco">
+        <p>Nenhum filme encontrado.</p>
+    </div>
+    <div class="bloco">
+        <a href="/read" class="botao">Voltar(listaDeFilmes)</a>
+    </div>
+    {% endif %}
+    {% include 'footer.html' %}
+</body>
+</html>
