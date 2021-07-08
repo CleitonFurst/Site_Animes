@@ -92,25 +92,7 @@ class Episodios(db.Model):
         db.session.delete(self)#remnovendo as informações de um filme do banco de dados 
         db.session.commit()
 
-class Comentarios(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    comentario = db.Column(db.String(255), nullable=False)
-    id_episodio = db.Column(db.Integer, nullable=False)
-    def __init__(self, comentarios, id_episodio):
-        self.comentario = comentarios
-        self.id_episodio = id_episodio
-    @staticmethod
-    def read_all():
-        return Comentarios.query.all()
-    @staticmethod
-    def read_single(comentario_id):
-        return Comentarios.query.get(comentario_id)
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+
 
 
 @app.route('/')
@@ -152,21 +134,19 @@ def update(filme_id):
         sucesso = True
     return render_template('update.html', anime = anime, sucesso = sucesso)
 
-@app.route('/opcao/delete')
-def delete():
-    return render_template('delete.html')
+@bp.route('/delete/<filme_id>')#rota de confirmação de delete
+def delete(filme_id):
+    filme = Animes.read_single(filme_id)
+    return render_template('delete.html', filme = filme)
 
-@app.route('/delete/<animes_id>/confirmed')
-def confirmed_delete(animes_id):
+@bp.route('/delete/<filme_id>/confirmed')#rota que faz o delete definitivo e mostra o html de sucesso 
+def delete_confirmed(filme_id):
     sucesso = None
-    animes = Animes.read_single(animes_id)
-    if animes:
-        animes.delete()
-        sucesso = True
-    return render_template(
-        'delete.html', 
-        sucesso = sucesso
-    )
+    filme = Animes.read_single(filme_id)
+    if filme:
+        filme.delete()
+        sucesso = True   
+    return render_template('delete.html', sucesso = sucesso)
 
 
 @app.route('/episodios')

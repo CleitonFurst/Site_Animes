@@ -4,80 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="shortcut icon" href="../static/img/icone.png" type="image/x-icon">
-    <title>Animes Blue</title>
-    <link rel="stylesheet" href="/static/style.css">
-    <link rel="stylesheet" href="/static/pages/opcao.css">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/pages/delete.css">
+    <title>Deletar Filme</title>
 </head>
 <body>
-    {% include 'header.html' %}
-    <div class="bloco">
-        <h2>Apagar Anime</h2>
-    </div>
-    
+    {% include 'header.html'%}
 
-
-    <title>Document</title>
-</head>
-<body>
-    {% include 'header' %}
-
-    {% if sucesso %}
-    <div class="bloco removido_sucesso">
-        <p>Registro removido com sucesso</p>
-    </div>
-    <div class="bloco">
-
-        <a href="/opcao" class="botao">Visualizar</a>
-    </div>
-    {% elif animes %}
-        {% for anime in animes %}    
+    {% if sucesso  %}
+        <div class="bloco removido_sucesso">
+            <p>Registro removido com sucesso !!</p>
+        </div><!--bloco removido_sucesso-->
         <div class="bloco">
-            <tbody>
-                <td>
-                    <a href="/opcao/delete/{{anime.id}}/confirmed">
-                    <img src="{{anime.imagem_url}}" height="300" alt="{{anime.nome}}"></a>                
-                </td>
-            </tbody>
+            <a href="/read" class="botao" >Visualizar tudo !</a>
         </div>
-        {% endfor %} 
-    <div class="bloco">
-        <p>Tem certeza que desseja remover o registro <span class=highlight>{{filme.nome}}</span> ?</p>
-    </div>
-    <div class="bloco">
-        <a href="/delete/{{anime.id}}/confirmed" class="botao">Remover</a>
-        <a href="/opcao" class="botao">Cancelar</a>
-
-        <a href="/read" class="botao">Visualizar Animes</a>
-    </div>
     {% elif filme %}
-    <div class="bloco">
-        <h2>Remover Registro</h2>
-    </div>
-    <div class="bloco">
-        <p>Tem certeza que desseja remover este Anime <span class=highlight>{{animes.nome}}</span> ?</p>
-    </div>
-    <div class="bloco">
-        <a href="/delete/{{animes.id}}/confirmed" class="botao">Remover</a>
-        <a href="/read" class="botao">Cancelar</a>
-
-    </div>
+        
+        <div class="bloco" >
+            <h2>Remover Filme</h2>
+        </div>
+        <div class="bloco">
+            <p>Tem certeza que deseja remover o filme <span class="highlight">{{filme.nome}}</span> ?</p>
+        </div>
+        <div class="bloco">
+            <a href="/delete/{{filme.id}}/confirmed" class="botao">Remover</a>
+            <a href="/read" class="botao">Cancelar</a>
+        </div>
     {% else %}
-    <div class="bloco">
-        <h2>Remover Registro</h2>
-    </div>
-    <div class="bloco">
-        <p>Nenhum filme encontrado.</p>
-    </div>
-    <div class="bloco">
-
-        <a href="/opcao" class="botao">Voltar(listaDeAnimes)</a>
-
-        <a href="/read" class="botao">Voltar(listaDeFilmes)</a>
-
-    </div>
+        <div class="bloco">
+            <h2>Remover Filme</h2>
+        </div>
+        <div class="bloco">
+            <p>Nenhum filme foi encontrado !!</p>
+        </div>
+        <div class="bloco">
+            <a href="/read" class="botao">Voltar para lista de filmes</a>
+        </div>
     {% endif %}
-    {% include 'footer.html' %}
+
 </body>
 </html>
