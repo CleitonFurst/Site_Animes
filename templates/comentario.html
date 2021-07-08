@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% include 'header.html' %}
+    {% if comentario %}
+    <div class="bloco">
+        <p>Comentario inserido com sucesso</br>
+        <br>
+        <a href="/play/{{id_comentario}}" class="botao">Voltar</a></p>
+    </div>
+    {% else %}
+    <div class="bloco">
+        <form class="form" method="POST">
+            <div class="bloco form_input">
+                <label for="nome">Comentario:</label>
+                <input type="text" id="comentario" name="nome">
+            </div>
+            <div class="bloco form_input">
+                <input type="submit" class="botao" value="Enviar">
+            </div>
+        </form>
+    </div>
+    {% endif %}
+    {% include footer.html %}
+</body>
+</html>

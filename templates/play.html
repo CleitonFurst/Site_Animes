@@ -35,7 +35,7 @@
             </a>
         </div>
         <div class=" item"> 
-            <a class="botao" href="https://animesonline.cc/anime/darling-in-the-franxx/"> 
+            <a class="botao" href="/episodios"> <!--https://animesonline.cc/anime/darling-in-the-franxx/-->
                 <i class="icone_barra"></i>
                 <span>Todos os episodios</span>
             </a>        
@@ -47,28 +47,12 @@
             </a>
         </div>
     </div>
-    {% if comentario %}
-    <div class="bloco">
-        <p>Comentario inserido com sucesso</br>
-        <br>
-        <a href="/play/{{id_comentario}}" class="botao">Voltar</a></p>
+    <div class="botao">
+        <a href="/play/comentario/{{novo_comentario}}" class="">Comentar</a>
     </div>
-    {% else %}
-    <div class="bloco">
-        <form class="form" method="POST">
-            <div class="bloco form_input">
-                <label for="comentario">Comentario:</label>
-                <input type="text" id="comentario" name="comentario">
-            </div>
-            <div class="bloco form_input">
-                <input type="submit" class="botao" value="Enviar">
-            </div>
-        </form>
-    </div>
-    {% endif %}
 
     <div class="botao">
-        <a href="/" class="">Voltar</a>
+        <a href="/opcao" class="">Voltar</a>
     </div>
     {% include 'footer.html' %}
 </body>
