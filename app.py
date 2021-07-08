@@ -127,9 +127,10 @@ def Play(episodio_id):
     episodio = Episodios.read_single(episodio_id)
     if request.method == 'POST':
         form = request.form
-        animes = Animes(form[comentario])
+        animes = Animes(form[Comentario])
         animes.save()
-        id_comentario = comentario.id
+        id_comentario = Comentario.id
+        print(id_comentario)
     return render_template(
         'play.html',
         id_comentario = id_comentario,
