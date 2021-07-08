@@ -8,13 +8,7 @@
 </head>
 <body>
     {% include 'header.html' %}
-    {% if comentario %}
-    <div class="bloco">
-        <p>Comentario inserido com sucesso</br>
-        <br>
-        <a href="/play/{{id_comentario}}" class="botao">Voltar</a></p>
-    </div>
-    {% else %}
+    {% if comentarios %}
     <div class="bloco">
         <form class="form" method="POST">
             <div class="bloco form_input">
@@ -22,10 +16,18 @@
                 <input type="text" id="comentario" name="nome">
             </div>
             <div class="bloco form_input">
-                <input type="submit" class="botao" value="Enviar">
+                <input type="submit" class="botao" value="{{comentario.id}}">
             </div>
         </form>
     </div>
+        {% if comentario %}
+        <div class="bloco">
+            <p>Comentario inserido com sucesso</br>
+            <br>
+            <a href="/episodios" class="botao">Voltar</a></p>
+        </div>
+        {% endif %}
+    
     {% endif %}
     {% include footer.html %}
 </body>
