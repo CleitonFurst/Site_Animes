@@ -92,6 +92,21 @@ class Episodios(db.Model):
         db.session.delete(self)#remnovendo as informações de um filme do banco de dados 
         db.session.commit()
 
+class Comentario(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    def __init__(self, comentario):
+        self.comentario = comentario
+    @staticmethod
+    def read_single(comentario_id):
+        return Comentario.query.get(comentario_id)
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+
 @app.route('/')
 def index():
     animes = Animes.read_all()
@@ -131,11 +146,20 @@ def episodios(animes_id):
    
     return render_template('episodios.html', episodios = episodios, animes = animes)
 
-@app.route('/play/<episodio_id>') 
+@app.route('/play/<episodio_id>', methods=('GET', 'POST')) 
 def Play(episodio_id):
     episodio = Episodios.read_single(episodio_id)
-
-    return render_template('play.html', episodio = episodio)
+    if request.method == 'POST':
+        form = request.form
+        animes = Animes(form[Comentario])
+        animes.save()
+        id_comentario = Comentario.id
+        print(id_comentario)
+    return render_template(
+        'play.html',
+        id_comentario = id_comentario,
+        episodio = episodio
+    )
 
 app.register_blueprint(bp)
 
