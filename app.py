@@ -149,15 +149,17 @@ def delete_confirmed(filme_id):
     return render_template('delete.html', sucesso = sucesso)
 
 
-@app.route('/episodios')
+@app.route('/episodios/<animes_id>')
 def episodios(animes_id):
-    episodios = Episodios.selecao(animes_id)
+    
     animes = Animes.read_all()
-    return render_template(
-        'episodios.html',
-        episodios = episodios,
-        animes = animes
-    )
+    
+    resumo = Animes.selecao(animes_id)
+    
+    episodios = Episodios.selecao(animes_id)
+    
+   
+    return render_template('episodios.html', episodios = episodios, animes = animes)
     #resumo = Animes.selecao(animes_id)
 
 @app.route('/play/<episodio_id>')
