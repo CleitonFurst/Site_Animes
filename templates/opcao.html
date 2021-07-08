@@ -20,19 +20,17 @@
         
         <tbody>
             <td>
-                <a href="/update/{{anime.id}}" class="botao">Atualizar</a>
-                <a href="/episodios/{{anime.id}}">
+                <a href="/play/{{anime.id}}">
                 <img src="{{anime.imagem_url}}" height="300" alt="{{anime.nome}}"></a>                
             </td>
         </tbody>
         
         {% endfor %}
     </div>
-        <div class="botao"><a href="/episodios">Avançar</a></div> 
-        <a href="/read/{{animes.id}}" class="botao">Visualizar</a>
-        
-        <a href="/update/{{animes.id}}" class="botao">Atualizar</a>
-        <a href="/delete/{{animes.id}}" class="botao">Deletar</a>
+    <div class="botao"><a href="/episodios">Avançar</a></div>
+    <div class="botao"><a href="/opcao/insert" class="botao">Add Anime</a></div>
+    <div class="botao"><a href="/opcao/update" class="botao">Atualizar</a></div>
+    <div class="botao"><a href="/delete" class="botao">Deletar</a></div>
              
     {% include 'footer.html' %}
 </body>

@@ -28,8 +28,8 @@ class Animes(db.Model):
         self.imagem_url = imagem_url
         
     @staticmethod
-    def selecao(id_anime):
-        return Animes.query.filter(Animes.id == id_anime)    
+    def selecao(id_animes):
+        return Animes.query.filter(Animes.id == id_animes)    
     @staticmethod
     def read_all():
         #SELECT * FROMM filmes order by id desc;
@@ -38,13 +38,13 @@ class Animes(db.Model):
 
     @staticmethod
     def read_single(animes_id):
-        
         return Animes.query.get(animes_id)
+    
     def save(self):
         db.session.add(self)#adicionando imformações passadas no form do html para o banco de dados
         db.session.commit()
 
-    def update(self,new_data):
+    def update(self, new_data):
         self.nome = new_data.nome
         self.imagem_url = new_data.imagem_url
         self.save()
@@ -84,20 +84,19 @@ class Episodios(db.Model):
     def update(self,new_data):
         self.nome = new_data.nome
         self.imagem_url = new_data.imagem_url
-        
         self.save()
 
     def delete(self):
         db.session.delete(self)#remnovendo as informações de um filme do banco de dados 
         db.session.commit()
 
-class Comentario(db.Model):
+class Comentarios(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    def __init__(self, comentario):
-        self.comentario = comentario
+    def __init__(self, comentarios):
+        self.comentario = comentarios
     @staticmethod
     def read_single(comentario_id):
-        return Comentario.query.get(comentario_id)
+        return Comentarios.query.get(comentario_id)
     def save(self):
         db.session.add(self)
         db.session.commit()
@@ -113,18 +112,7 @@ def index():
         'index.html',
         animes = animes
     )
-@app.route('/update/<filme_id>', methods=['GET', 'POST'])
-def update(filme_id):
-    sucesso = None
-    anime = Animes.read_single(filme_id)
-    if request.method == 'POST':
-        form = request.form
 
-        new_data = Animes(form['nome'],form['imagem_url'])
-
-        anime.update(new_data)
-        sucesso = True
-    return render_template('update.html', anime = anime, sucesso = sucesso)
 @app.route('/opcao')
 def Opcao():
     animes = Animes.read_all()
@@ -132,13 +120,41 @@ def Opcao():
         'opcao.html',
         animes = animes
     )
+@app.route('/opcao/insert', methods = ('GET', 'POST'))
+def insert():
+    novo_anime = None
+    if request.method == 'POST':
+        form = request.form
+        animes = Animes(form['nome'], form['imagem_url'])
+        animes.save()
+        novo_anime = animes.id
+    return render_template(
+        'insert.html',
+        novo_anime = novo_anime
+    )
+
+@app.route('/opcao/update', methods=('GET', 'POST'))
+def update(animes_id):
+    sucesso = None
+    anime = Animes.read_single(animes_id)
+    if request.method == 'POST':
+        form = request.form
+        new_data = Animes(form['nome'], form['imagem_url'])
+        anime.update(new_data)
+        sucesso = True
+    return render_template(
+        'update.html', 
+        anime = anime, 
+        sucesso = sucesso
+    )
+
 
 @app.route('/episodios/<animes_id>')
 def episodios(animes_id):
     
     animes = Animes.read_all()
     
-    resumo = Animes.selecao(animes_id)
+    #resumo = Animes.selecao(animes_id)
     
     episodios = Episodios.selecao(animes_id)
     
@@ -148,17 +164,18 @@ def episodios(animes_id):
 @app.route('/play/<episodio_id>', methods=('GET', 'POST')) 
 def Play(episodio_id):
     episodio = Episodios.read_single(episodio_id)
+    novo_comentario = None
     if request.method == 'POST':
         form = request.form
-        animes = Animes(form[Comentario])
-        animes.save()
-        id_comentario = Comentario.id
-        print(id_comentario)
+        comentarios = Comentarios(form[comentario])
+        comentarios.save()
+        novo_comentario = comentarios.id
     return render_template(
         'play.html',
-        id_comentario = id_comentario,
+        novo_comentario = novo_comentario,
         episodio = episodio
     )
+    
 
 app.register_blueprint(bp)
 
