@@ -37,17 +37,17 @@
     <div class="single_tabs"></div>
     <div class="resumotemp">
         <div class="wp-content">
-            <p>Darling in the Franxx Todos os Episodios Online, Assistir Darling in the Franxx Anime Completo, Assistir
-                Darling in the Franxx Online.<br> A história está definida no futuro distante. A terra está arruinada, e
-                a humanidade estabelece a plantação móvel da fort city. Os pilotos produziram dentro de Plantation ao
-                vivo em Mistilteinn, também conhecido como “birdcage”. As crianças vivem ali sem saber nada do mundo
-                exterior nem da liberdade do céu. Suas vidas consistem em lutar para realizar missões. Seus inimigos são
-                misteriosas formas de vida gigantes conhecidas como Kyōryū, e os robôs pilotos das crianças chamaram
-                Franxx para enfrentarem-se contra eles. Para as crianças, montar o Franxx prova sua existência. Um
-                menino chamado Hiro é chamado de Código: 016, e ele já foi conhecido como um prodígio. No entanto, ele
-                ficou para trás, e sua existência parece desnecessária. Não pilotar um Franxx é o mesmo que deixar de
-                existir. Um dia, aparece uma menina misteriosa conhecida como “Zero Two”. Dois chifres crescem fora de
-                sua cabeça.</p>
+
+            {% for resumo in animes %}
+            <p>{{resumo.id}}</p>
+                
+                    {% if {{resumo.id}} == 2 %}
+                        <p>{{resumo.resumo}}</p>
+                    {% endif %}
+                
+                
+            {% endfor %}
+
             <h2>Todos episódios de Darling in the Franxx</h2>
         </div>
     </div>

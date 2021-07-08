@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/pages/update.css">
+    <link rel="stylesheet" href="../static/pages/create.css">
+    <title>CRUD - update</title>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    {% if sucesso %}
+        <div class="bloco sucesso">
+            <p>Registro editado com sucesso!!</p>
+        </div>
+    {% endif %}
+    
+    <div class="bloco">
+        <h2>Editar Registro</h2>
+    </div>
+    <div class="bloco">
+        <form class="form" method="POST">
+           <div class="bloco form_input">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" value="{{anime.nome}}"> 
+           </div><!--bloco form_input-->
+
+           <div class="bloco form_input">
+                <label for="imagem_url">URL da Imagem:</label>
+                <input type="text" id="imagem_url" name="imagem_url" value="{{anime.imagem_url}}"> 
+           </div><!--bloco form_input-->
+           
+
+           <div class="bloco form_input">
+               <input type="submit" class="botao" value="Enviar">
+           </div>
+
+        </form><!--form-->
+    </div><!--bloco-->
+
+</body>
+</html>
