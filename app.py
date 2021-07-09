@@ -28,8 +28,8 @@ class Animes(db.Model):
         self.imagem_url = imagem_url
         
     @staticmethod
-    def selecao(animes_id):
-        return Animes.query.filter(Animes.id == animes_id)    
+    def selecao(id_anime):
+        return Animes.query.filter(Animes.id == id_anime)    
     @staticmethod
     def read_all():
         #SELECT * FROMM filmes order by id desc;
@@ -38,13 +38,13 @@ class Animes(db.Model):
 
     @staticmethod
     def read_single(animes_id):
+        
         return Animes.query.get(animes_id)
-    
     def save(self):
         db.session.add(self)#adicionando imformações passadas no form do html para o banco de dados
         db.session.commit()
 
-    def update(self, new_data):
+    def update(self,new_data):
         self.nome = new_data.nome
         self.imagem_url = new_data.imagem_url
         self.save()
@@ -52,7 +52,6 @@ class Animes(db.Model):
     def delete(self):
         db.session.delete(self)#remnovendo as informações de um filme do banco de dados 
         db.session.commit()
-        
 
 class Episodios(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -60,15 +59,14 @@ class Episodios(db.Model):
     descricao = db.Column(db.String(255), nullable=False)
     link_url = db.Column(db.String(255), nullable=False)
     anime_id = db.Column(db.Integer, nullable=False)
-    def __init__(self, numero, descricao, link_url, anime_id):
+    def __init__(self,numero,link_url,descricao):
         self.numero = numero
         self.link_url = link_url
         self.descricao = descricao
-        self.anime_id = anime_id
 
     @staticmethod
-    def selecao(id_episodio):
-        return Episodios.query.filter(Episodios.episodio_id == id_episodio)
+    def selecao(id_anime):
+        return Episodios.query.filter(Episodios.anime_id == id_anime)
     @staticmethod
     def read_all():
         #SELECT * FROMM filmes order by id desc;
@@ -86,19 +84,47 @@ class Episodios(db.Model):
     def update(self,new_data):
         self.nome = new_data.nome
         self.imagem_url = new_data.imagem_url
+        
         self.save()
 
     def delete(self):
         db.session.delete(self)#remnovendo as informações de um filme do banco de dados 
         db.session.commit()
 
-
+class Comentario(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    def __init__(self, comentario):
+        self.comentario = comentario
+    @staticmethod
+    def read_single(comentario_id):
+        return Comentario.query.get(comentario_id)
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    animes = Animes.read_all()
+    return render_template(
+        'index.html',
+        animes = animes
+    )
+@app.route('/update/<filme_id>', methods=['GET', 'POST'])
+def update(filme_id):
+    sucesso = None
+    anime = Animes.read_single(filme_id)
+    if request.method == 'POST':
+        form = request.form
 
+        new_data = Animes(form['nome'],form['imagem_url'])
+
+        anime.update(new_data)
+        sucesso = True
+    return render_template('update.html', anime = anime, sucesso = sucesso)
 @app.route('/opcao')
 def Opcao():
     animes = Animes.read_all()
@@ -118,22 +144,6 @@ def insert():
         'insert.html',
         novo_anime = novo_anime
     )
-
-
-
-@app.route('/update/<filme_id>', methods=['GET', 'POST'])
-def update(filme_id):
-    sucesso = None
-    anime = Animes.read_single(filme_id)
-    if request.method == 'POST':
-        form = request.form
-
-        new_data = Animes(form['nome'],form['imagem_url'])
-
-        anime.update(new_data)
-        sucesso = True
-    return render_template('update.html', anime = anime, sucesso = sucesso)
-
 @bp.route('/delete/<filme_id>')#rota de confirmação de delete
 def delete(filme_id):
     filme = Animes.read_single(filme_id)
@@ -147,8 +157,6 @@ def delete_confirmed(filme_id):
         filme.delete()
         sucesso = True   
     return render_template('delete.html', sucesso = sucesso)
-
-
 @app.route('/episodios/<animes_id>')
 def episodios(animes_id):
     
@@ -160,27 +168,17 @@ def episodios(animes_id):
     
    
     return render_template('episodios.html', episodios = episodios, animes = animes)
-    #resumo = Animes.selecao(animes_id)
 
-@app.route('/play/<episodio_id>')
+@app.route('/play/<episodio_id>', methods=('GET', 'POST')) 
 def Play(episodio_id):
     episodio = Episodios.read_single(episodio_id)
-    return render_template('play.html', episodio = episodio)
-
-
-@app.route('/play/comentarios', methods=('GET', 'POST')) 
-def Play_comentario(comentario_id):
-    novo_comentario = None
-    if request.method == 'POST':
-        form = request.form
-        comentarios = Comentarios(form[comentario_id])
-        comentarios.save()
-        novo_comentario = comentarios.id
+ 
+        
     return render_template(
-        'comentarios.html',
-        novo_comentario = novo_comentario,
+        'play.html',
+       
+        episodio = episodio
     )
-    
 
 app.register_blueprint(bp)
 
