@@ -12,7 +12,7 @@
 <body>
     {% include 'header.html' %}
 
-    <h2>Clik no Anime(Assistir)</h2>
+    <h2>Assista um Anime</h2>
 
     <div class="bloco tabela">
         
@@ -21,18 +21,17 @@
         <tbody>
             <td>
                 <a href="/update/{{anime.id}}" class="botao">Atualizar</a>
-                <a href="/play/{{anime.id}}">
-                <img src="{{anime.imagem_url}}" height="300" alt="{{anime.nome}}"></a> 
-                <a href="/delete/{{anime.id}}" class="botao">Deletar</a>               
+                <a href="/episodios/{{anime.id}}">
+                <img src="{{anime.imagem_url}}" height="300" alt="{{anime.nome}}"></a>    
+                <a href="/delete/{{anime.id}}" class="botao">Deletar</a>            
             </td>
         </tbody>
-      
         
         {% endfor %}
     </div>
-    <div class="botao"><a href="/episodios">Avançar</a></div>
-    <div class="botao"><a href="/opcao/insert" class="botao">Add Anime</a></div>
-   
+        <div class="botao"><a href="/episodios">Avançar</a></div>       
+       
+        <div class="botao"><a href="/opcao/insert" class="botao">Add Anime</a></div>
              
     {% include 'footer.html' %}
 </body>
